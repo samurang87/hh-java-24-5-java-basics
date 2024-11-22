@@ -2,6 +2,8 @@ package de.neuefische;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class StuffToTestTest {
 
@@ -59,5 +61,20 @@ class StuffToTestTest {
     @Test
     void isPositive_true_plus2() {
         Assertions.assertTrue(StuffToTest.isPositive(1));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "10, 10, 20",
+            "12, 11, 23",
+    })
+    void sum_parametrized(int a, int b, int expectedSum) {
+        // When
+        int actualSum = StuffToTest.summe(a, b);
+        // Then
+        Assertions.assertEquals(expectedSum, actualSum);
+    }
+
+    public static class FizzBuzzTest {
     }
 }
