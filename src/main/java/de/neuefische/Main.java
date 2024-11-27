@@ -3,13 +3,19 @@ package de.neuefische;
 public class Main {
     public static void main(String[] args) {
 
+        Counter counter1 = new Counter();
+        Counter counter2 = new Counter();
+        Counter counter3 = new Counter();
 
-        Vehicle truck = new Vehicle("Iveco", "BigOne", 2011);
-        Car car = new Car("Ferrari", "Red", 2022, 2);
-        Motorcycle vespa = new Motorcycle("Vespa", "Special", 2024, "Scooter");
+        counter1.incrementInstanceCount();
+        counter2.incrementInstanceCount();
+        counter3.incrementInstanceCount();
 
-        truck.outputVehicleInfo();
-        car.outputVehicleInfo();
-        vespa.outputVehicleInfo();
+        counter1.incrementInstanceCount();
+        Counter.incrementTotalCount();
+
+        System.out.println(Counter.getTotalCount());
+        System.out.println(counter1.getInstanceCount());
+
     }
     }
