@@ -1,25 +1,19 @@
 package de.neuefische;
 
+import de.neuefische.mediaplayer.MediaController;
+import de.neuefische.mediaplayer.MusicPlayer;
+import de.neuefische.mediaplayer.Playable;
+import de.neuefische.mediaplayer.VideoPlayer;
+
 public class Main {
     public static void main(String[] args) {
 
-        Counter counter1 = new Counter();
-        Counter counter2 = new Counter();
-        Counter counter3 = new Counter();
+        Playable musicPlayer = new MusicPlayer();
+        Playable videoPlayer = new VideoPlayer();
 
-        counter1.incrementInstanceCount();
-        counter2.incrementInstanceCount();
-        counter3.incrementInstanceCount();
+        MediaController mediaController = new MediaController();
 
-        counter1.incrementInstanceCount();
-        Counter.incrementTotalCount();
-
-        System.out.println(Counter.getTotalCount());
-        System.out.println(counter1.getInstanceCount());
-
-        System.out.println(Counter.add(12, 87));
-        System.out.println(Counter.subtract(100, 1));
-        System.out.println(Counter.multiply(9, 11));
-        System.out.println(Counter.divide(198, 2));
+        mediaController.playMedia(musicPlayer, "Jingle Bells");
+        mediaController.playMedia(videoPlayer, "Home Alone");
     }
     }
