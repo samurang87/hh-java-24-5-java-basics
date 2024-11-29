@@ -1,30 +1,21 @@
 package de.neuefische;
 
-import de.neuefische.school.Course;
-import de.neuefische.school.School;
-import de.neuefische.school.Student;
-
-import java.util.ArrayList;
-import java.util.List;
+import de.neuefische.pharmacy.Medication;
+import de.neuefische.pharmacy.Pharmacy;
 
 public class Main {
     public static void main(String[] args) {
+        Pharmacy pharmacy = new Pharmacy();
+        pharmacy.save(new Medication("Imodium", 1.99, 100));
+        pharmacy.save(new Medication("Tantum Verde", 3.99, 150));
+        pharmacy.save(new Medication("Aspirin", 4.99, 200));
 
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("Max", "Mustermann", 1));
-        students.add(new Student("John", "Snow", 2));
-        students.add(new Student("Mario", "Rossi", 3));
+        pharmacy.printMedicationCatalogue();
 
-        School school = new School(students);
-        school.addStudent(new Student("Gina", "Mustermann", 4));
-        school.showStudents();
-        Student badStudent = school.getStudentByID(3);
-        school.removeStudent(badStudent);
-        System.out.println("----");
-        school.showStudents();
+        pharmacy.delete("Aspirin");
+        System.out.println(pharmacy.find("Aspirin"));
+        System.out.println("Ran out of Aspirin! What is left?");
 
-        Student student1 = school.getStudentByID(1);
-        student1.addCourse(new Course("Watercolor", "Jane Green", 1));
-        System.out.println("Student 1 is taking " + school.getCoursesByStudentID(1));
+        pharmacy.printMedicationCatalogue();
     }
     }

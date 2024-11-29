@@ -7,6 +7,7 @@ package de.neuefische.school;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
     private String firstName;
@@ -36,5 +37,17 @@ public class Student {
 
     public List<Course> getCourses() {
         return courses;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return studentID == student.studentID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(studentID);
     }
 }
