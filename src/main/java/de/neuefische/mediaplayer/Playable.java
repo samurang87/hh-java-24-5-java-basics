@@ -16,5 +16,5 @@ package de.neuefische.mediaplayer;
 
 public interface Playable {
 
-    public void play(String nameOfPlayable);
+    void play(String nameOfPlayable);
 }
