@@ -1,27 +1,20 @@
 package de.neuefische;
 
-import de.neuefische.bankservice.BankService;
-import de.neuefische.bankservice.Client;
+import de.neuefische.zoo.Animal;
+import de.neuefische.zoo.Owner;
+import de.neuefische.zoo.Species;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        BankService bankService = new BankService();
+        Animal fox = new Animal(
+                1,
+                "Foxy",
+                new Species("Fox", 100),
+                3, new Owner("Max Mustermann", 38, "Berlin"),
+                LocalDate.of(2023, 3, 15));
 
-        Client client1 = new Client("Max", "Mustermann", 1);
-        Client client2 = new Client("John", "Doe", 2);
-
-        String account1 = bankService.openAccount(client1);
-        bankService.getAccounts().get(account1).deposit(new BigDecimal("2000.0"));
-
-
-        String account2 = bankService.openAccount(client2);
-        bankService.getAccounts().get(account2).deposit(new BigDecimal("1000.0"));
-
-        bankService.transferAmount(account1, account2, new BigDecimal("500.0"));
-
-        System.out.println(bankService.getAccounts().get(account1));
-        System.out.println(bankService.getAccounts().get(account2));
+        System.out.println(fox.daysUntilBirthday() + " days until " + fox.name() + "'s birthday");
     }
     }
